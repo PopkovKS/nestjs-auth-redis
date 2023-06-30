@@ -4,10 +4,8 @@ import { PrismaClientExceptionFilter, PrismaService } from "nestjs-prisma";
 
 import * as connectRedis from 'connect-redis';
 import * as session from 'express-session';
-import {createClient} from 'redis';
 import {Logger} from '@nestjs/common';
 import * as passport from 'passport';
-// import * as csurf from 'csurf';
 import * as redis from 'redis';
 
 
@@ -31,42 +29,18 @@ async function bootstrap() {
 
   const redisClient = redis.createClient(6379, '127.0.0.1');
 
-  // redisClient.on('error', (err) =>
-  //     Logger.error('Could not establish a connection with redis. ' + err)
-  // );
-  // redisClient.on('connect', () =>
-  //     Logger.verbose('Connected to redis successfully')
-  // );
-
-  // app.use(
-  //     session({
-  //       store: new RedisStore({client: redisClient as any}),
-  //       secret: 'demo-session-secret',
-  //       resave: false,
-  //       saveUninitialized: false,
-  //       cookie: {
-  //         httpOnly: true,
-  //         sameSite: 'strict',
-  //       },
-  //     })
-  // );
-
   app.use(
       session({
-        secret: 'demo-session-secret', //加密session时所使用的密钥
+        secret: 'demo-session-secret',
         resave: false,
         saveUninitialized: false,
-        // 使用redis存储session
         store: new RedisStore({ client: redisClient }),
       }),
   );
 
   app.use(passport.initialize());
   app.use(passport.session());
-  // ---- Session
 
-  // CSURF must be after cookie-parser & session
-  // app.use(csurf());
 
   // Validation
   app.useGlobalPipes(new ValidationPipe());
