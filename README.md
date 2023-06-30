@@ -1,27 +1,7 @@
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest).js backend API with JWT Authentication (Prisma, PostgreSQL).
-
-## Swagger documentation
-
-`http://195.2.81.137:3000/api#/`
-
-
-## Blog API
-
- `http://195.2.81.137:3000/api`
-
-Email: `test@test.ru`
-Password: `test`
-
-
-## Pgweb(test-db)
-
-`http://195.2.81.137:8085`
-
-
-
+[Nest](https://github.com/nestjs/nest).js backend with JWT Authentication, Redis (Prisma, PostgreSQL).
 
 
 #### Локальная раработка
