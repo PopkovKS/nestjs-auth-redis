@@ -28,15 +28,6 @@ export class AuthController {
     return [req.session, logUser];
   }
 
-  // @UseGuards(RefreshTokenGuard)
-  // @Get("refresh")
-  // @ApiOperation({ summary: "Getting refresh token" })
-  // refreshTokens(@Req() req) {
-  //   const userId = req.user["id"];
-  //   const refreshToken = req.user["refresh_token"];
-  //   return this.authService.refreshTokens(userId, refreshToken);
-  // }
-
   @UseGuards(AccessTokenGuard)
   @Get("logout")
   logout(@Request() req) {
