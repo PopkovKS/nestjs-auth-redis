@@ -63,9 +63,9 @@ export class AuthService {
     };
   }
 
-  async logout(userId: string) {
-    return this.usersService.update(Number(userId), { refreshToken: null });
-  }
+  // async logout(userId: string) {
+  //   return this.usersService.update(Number(userId), { refreshToken: null });
+  // }
 
   
 

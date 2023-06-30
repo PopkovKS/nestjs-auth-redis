@@ -23,15 +23,15 @@ export class AuthController {
   @UseGuards(LocalGuard)
   @Post("login")
   async login(@Request() req) {
-    const logUser = await this.authService.login(req.user)
-    // return this.authService.login(req.user);
-    return [req.session, logUser];
+    // const logUser = await this.authService.login(req.user)
+    return this.authService.login(req.user);
+    // return [req.session, logUser];
   }
 
   @UseGuards(AccessTokenGuard)
   @Get("logout")
   logout(@Request() req) {
-    this.authService.logout(req.user["id"]);
+    // this.authService.logout(req.user["id"]);
     req.session.cookie.maxAge = 0
   }
 }

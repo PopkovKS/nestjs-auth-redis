@@ -50,7 +50,7 @@ export class UsersService {
 
   async update(
     id: number,
-    updateUserDto: UpdateUserDto | { refreshToken: string },
+    updateUserDto: UpdateUserDto,
   ): Promise<UserDocument> {
     return this.prisma.user.update({
       where: {
